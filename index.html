@@ -1,0 +1,488 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Nova — Creative Web Experience</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #0b1020;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        /* NAVBAR */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 18px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(11, 16, 32, 0.85);
+            backdrop-filter: blur(12px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: bold;
+            color: #7c5cff;
+        }
+
+        .logo span {
+            color: #00d4ff;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #00d4ff;
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 120px 20px 60px;
+            background:
+                radial-gradient(circle at 20% 20%, rgba(124,92,255,0.25), transparent 30%),
+                radial-gradient(circle at 80% 70%, rgba(0,212,255,0.18), transparent 30%),
+                #0b1020;
+        }
+
+        .hero-content {
+            max-width: 850px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 8px 18px;
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 30px;
+            color: #00d4ff;
+            margin-bottom: 20px;
+            background: rgba(255,255,255,0.05);
+        }
+
+        .hero h1 {
+            font-size: clamp(45px, 8vw, 85px);
+            line-height: 1.05;
+            margin-bottom: 25px;
+        }
+
+        .gradient {
+            background: linear-gradient(90deg, #7c5cff, #00d4ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            color: #b8bfd3;
+            font-size: 18px;
+            max-width: 650px;
+            margin: auto;
+        }
+
+        .buttons {
+            margin-top: 35px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 13px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+            display: inline-block;
+        }
+
+        .primary {
+            background: linear-gradient(90deg, #7c5cff, #00d4ff);
+            color: white;
+        }
+
+        .secondary {
+            border: 1px solid #444b64;
+            color: white;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,212,255,0.2);
+        }
+
+        /* SECTIONS */
+        section {
+            padding: 90px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: #9da5bb;
+        }
+
+        /* CARDS */
+        .cards {
+            max-width: 1100px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .card {
+            padding: 30px;
+            border-radius: 18px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.08);
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            border-color: #7c5cff;
+            background: rgba(124,92,255,0.08);
+        }
+
+        .icon {
+            width: 55px;
+            height: 55px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 15px;
+            font-size: 25px;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #7c5cff, #00d4ff);
+        }
+
+        .card h3 {
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: #9da5bb;
+            font-size: 15px;
+        }
+
+        /* ABOUT */
+        .about {
+            max-width: 900px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .about p {
+            color: #b8bfd3;
+            font-size: 17px;
+        }
+
+        /* CONTACT */
+        .contact-box {
+            max-width: 700px;
+            margin: auto;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            background: linear-gradient(
+                135deg,
+                rgba(124,92,255,0.15),
+                rgba(0,212,255,0.08)
+            );
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .contact-box button {
+            margin-top: 25px;
+            border: none;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #8c94aa;
+            border-top: 1px solid rgba(255,255,255,0.08);
+        }
+
+        /* MOBILE */
+        @media (max-width: 768px) {
+
+            nav {
+                padding: 15px 5%;
+            }
+
+            nav ul {
+                gap: 12px;
+            }
+
+            nav ul li a {
+                font-size: 13px;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 70px 5%;
+            }
+
+            .hero h1 {
+                font-size: 48px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav>
+        <div class="logo">NO<span>VA</span></div>
+
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+
+        <div class="hero-content">
+
+            <div class="badge">
+                ✨ Welcome to Nova
+            </div>
+
+            <h1>
+                Build Something
+                <span class="gradient">Amazing.</span>
+            </h1>
+
+            <p>
+                A modern and responsive web experience designed with
+                clean UI, smooth interactions and a creative digital feel.
+            </p>
+
+            <div class="buttons">
+
+                <a href="#features" class="btn primary">
+                    Explore More →
+                </a>
+
+                <a href="#contact" class="btn secondary">
+                    Contact Us
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FEATURES -->
+    <section id="features">
+
+        <div class="section-title">
+
+            <h2>What We Offer</h2>
+
+            <p>
+                Simple technology. Beautiful experiences.
+            </p>
+
+        </div>
+
+        <div class="cards">
+
+            <div class="card">
+
+                <div class="icon">⚡</div>
+
+                <h3>Fast Performance</h3>
+
+                <p>
+                    Lightweight and optimized design that provides
+                    a smooth and fast browsing experience.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="icon">🎨</div>
+
+                <h3>Modern Design</h3>
+
+                <p>
+                    Clean layouts, attractive gradients and responsive
+                    components for a modern digital experience.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="icon">📱</div>
+
+                <h3>Responsive</h3>
+
+                <p>
+                    Designed to look great on desktops, tablets and
+                    mobile devices.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ABOUT -->
+    <section id="about">
+
+        <div class="about">
+
+            <div class="section-title">
+
+                <h2>About Nova</h2>
+
+            </div>
+
+            <p>
+                Nova is a simple demonstration of how HTML, CSS and
+                JavaScript can be combined to create an attractive
+                and interactive webpage. The design focuses on
+                simplicity, responsiveness and user experience.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- CONTACT -->
+    <section id="contact">
+
+        <div class="contact-box">
+
+            <h2>Let's Connect</h2>
+
+            <p style="color:#aeb6cb; margin-top:10px;">
+                Have an idea or want to know more?
+                Click the button below.
+            </p>
+
+            <button
+                class="btn primary"
+                onclick="showMessage()">
+                Say Hello 👋
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer>
+
+        © 2026 Nova. Designed with HTML, CSS & JavaScript.
+
+    </footer>
+
+
+    <!-- JAVASCRIPT -->
+    <script>
+
+        function showMessage() {
+
+            alert(
+                "Hello! 👋 Thanks for visiting the Nova webpage."
+            );
+
+        }
+
+        // Simple scroll effect
+        document.querySelectorAll('a[href^="#"]').forEach(link => {
+
+            link.addEventListener("click", function(event) {
+
+                event.preventDefault();
+
+                const target =
+                    document.querySelector(this.getAttribute("href"));
+
+                if (target) {
+
+                    target.scrollIntoView({
+                        behavior: "smooth"
+                    });
+
+                }
+
+            });
+
+        });
+
+    </script>
+
+</body>
+</html>
+```
